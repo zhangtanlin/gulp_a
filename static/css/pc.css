@@ -1,0 +1,246 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* 重置【老板浏览器重置】 */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* 重置【项目需求添加重置】 */
+a {
+  color: inherit;
+  text-decoration: none; }
+
+.textWhite {
+  color: #fff; }
+
+.textRed {
+  color: #e95451; }
+
+.pcBg {
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("../images/pc/pc_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1; }
+
+.pcHeader {
+  width: 100%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3; }
+  .pcHeader .content {
+    height: 80px;
+    margin: 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .pcHeader .content .info {
+      display: flex;
+      align-items: center; }
+      .pcHeader .content .info img {
+        width: 50px;
+        height: 50px; }
+      .pcHeader .content .info span {
+        margin-left: 10px; }
+        @media (max-width: 1199px) {
+          .pcHeader .content .info span {
+            display: none; } }
+    .pcHeader .content .active {
+      display: flex; }
+      .pcHeader .content .active .btn {
+        padding: 0 15px;
+        margin: 0 5px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer; }
+        .pcHeader .content .active .btn:hover {
+          background-color: rgba(255, 255, 255, 0.4); }
+
+.pccontentbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; }
+  .pccontentbox .pcContent {
+    margin-top: 10%;
+    margin-left: 30%; }
+    @media (max-width: 1199px) {
+      .pccontentbox .pcContent {
+        margin-top: 0;
+        margin-left: 0; } }
+    .pccontentbox .pcContent .downloadBox {
+      display: flex;
+      justify-content: flex-end; }
+      @media (max-width: 850px) {
+        .pccontentbox .pcContent .downloadBox {
+          flex-direction: column; } }
+      .pccontentbox .pcContent .downloadBox .list {
+        display: flex;
+        padding-left: 30px;
+        position: relative; }
+        @media (max-width: 850px) {
+          .pccontentbox .pcContent .downloadBox .list {
+            margin-top: 40px; } }
+        .pccontentbox .pcContent .downloadBox .list .btn {
+          font-size: 22px;
+          padding: 0 20px;
+          height: 50px;
+          line-height: 50px;
+          border-radius: 50px;
+          background-color: #fff;
+          cursor: pointer; }
+          @media (max-width: 850px) {
+            .pccontentbox .pcContent .downloadBox .list .btn {
+              width: 170px;
+              text-align: center; } }
+        .pccontentbox .pcContent .downloadBox .list .iconBox {
+          margin-left: 10px;
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          background-color: #fff;
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+          cursor: pointer; }
+          .pccontentbox .pcContent .downloadBox .list .iconBox:hover + :nth-child(3) {
+            display: block; }
+        .pccontentbox .pcContent .downloadBox .list .iconBlack {
+          background-image: url("../images/iconfont/icon_qrcode_black.png"); }
+        .pccontentbox .pcContent .downloadBox .list .iconRed {
+          background-image: url("../images/iconfont/icon_qrcode_red.png"); }
+        .pccontentbox .pcContent .downloadBox .list .qrcodeBox {
+          width: 160px;
+          height: 180px;
+          background-color: #fff;
+          border-radius: 10px;
+          position: absolute;
+          top: 60px;
+          right: 0;
+          display: none; }
+          @media (max-width: 850px) {
+            .pccontentbox .pcContent .downloadBox .list .qrcodeBox {
+              top: 0;
+              text-align: center;
+              left: 310px; } }
+          .pccontentbox .pcContent .downloadBox .list .qrcodeBox .qrcode {
+            width: 140px;
+            height: 140px;
+            margin: 10px auto 0;
+            background-image: url("../images/bg_default.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #eee; }
+            .pccontentbox .pcContent .downloadBox .list .qrcodeBox .qrcode img {
+              width: 100%;
+              height: 100%; }
+          .pccontentbox .pcContent .downloadBox .list .qrcodeBox .text {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            text-align: center; }
+    .pccontentbox .pcContent .pcPrompt {
+      margin-top: 20px;
+      font-size: 16px;
+      text-align: right;
+      color: #f6ff00;
+      line-height: 30px; }
+      @media (max-width: 600px) {
+        .pccontentbox .pcContent .pcPrompt {
+          padding: 0 10px; } }
+
+.pInstall {
+  display: none; }
+  .pInstall .pInstallBox {
+    width: 100%;
+    height: auto;
+    background-color: #fcfcfc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    color: #ff5757; }
+    .pInstall .pInstallBox .content {
+      width: 500px;
+      height: auto;
+      margin: 0 auto;
+      text-align: center; }
+      .pInstall .pInstallBox .content .title {
+        margin-top: 30px;
+        font-size: 50px;
+        font-weight: 900; }
+      .pInstall .pInstallBox .content .question {
+        font-size: 30px;
+        font-weight: 900;
+        margin-top: 10px; }
+      .pInstall .pInstallBox .content .subTitle {
+        margin: 10px 0;
+        font-size: 18px;
+        font-weight: 900; }
+      .pInstall .pInstallBox .content .lightTitle {
+        font-size: 16px;
+        font-weight: lighter; }
+      .pInstall .pInstallBox .content img {
+        width: 100%;
+        margin-top: 20px; }
+      .pInstall .pInstallBox .content .videoInstall {
+        width: 480px; }
+    .pInstall .pInstallBox .closeBtn {
+      width: 20px;
+      height: 20px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-image: url("../images/iconfont/icon_close.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer; }
