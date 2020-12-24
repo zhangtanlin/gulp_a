@@ -1,0 +1,349 @@
+// 单行-超出的文本-省略号显示
+@mixin textOverflow() {
+  overflow:hidden;        /* 超出的文本隐藏 */
+  text-overflow:ellipsis; /* 溢出用省略号显示 */
+  white-space:nowrap;     /* 溢出不换行 */
+}
+// 行间元素对齐
+@mixin textLeft {
+  text-align: left;
+}
+@mixin textRight {
+  text-align: right;
+}
+
+/* pc端 */
+.pc {
+  width: 100%;
+  height: 100%;
+}
+.pc-header {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 11px;
+  color: rgb(204, 204, 204);
+  background: rgb(29, 17, 60);
+  text-align: right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.pc-header-btn {
+  margin-right: 20px;
+  text-decoration: none;
+}
+.pc-header img {
+  height: 10px;
+}
+.pc-poster {
+  height: 100%;
+  background-image: linear-gradient(rgb(29, 17, 60),rgb(14, 9, 29), rgb(30, 18, 62));
+  display: flex;
+  align-items: center;
+}
+.pc-poster-left,
+.pc-poster-right {
+  flex: 1;
+}
+.pc-poster-left {
+  justify-content: flex-end;
+}
+.pc-poster-left::after {
+  content: '';
+  clear: both;
+}
+.pc-poster-right {
+  padding-left: 2rem;
+}
+.pc-post-box {
+  float: right;
+  text-align: center;
+}
+.pc-post-img-box {
+  width: 100%;
+}
+.pc-post-img-box::after {
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.pc-post-box img {
+  margin-right: 1.5rem;
+  width: 16rem;
+}
+.pc-poster-descript {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  text-align: center;
+  color: #fff;
+}
+.pc-logo {
+  width: 65%;
+}
+.pc-subtitle {
+  margin: 3rem 0 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.pc-download-box {}
+.pc-download-box::after {
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.pc-download-list {
+  margin-right: 2.5%;
+  width: 20%;
+  float: left;
+}
+.pc-download-btn {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pc-download-img {
+  width: 100%;
+}
+.pc-download-qrcode {
+  width: 75%;
+  margin: 10% auto 0;
+  padding: 5%;
+  border: 1px solid #85818f;
+  border-radius: 3px;
+  background: #fff;
+}
+#android-qrcode canvas,
+#ios-qrcode-tf canvas,
+#ios-qrcode-company canvas{
+  width: 100%!important;
+  margin: 0.011rem;
+}
+.pc-descript {
+  height: 50%;
+  color: #fff;
+}
+.pc-descript-red{
+  background:  rgb(231, 67, 109);
+}
+.pc-descript-box {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.pc-descript-box::after {
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.pc-descript-blue {
+  background: rgb(38, 21, 73);
+}
+.pc-descript-list {
+  flex: 1;
+  text-align: center;
+}
+.pc-descript-img {
+  width: 40%;
+  margin-right: 20%;
+}
+.pc-descript-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.pc-descript-subtitle {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+/* 移动端 */
+.mobile {
+  padding-bottom: 60px;
+  background: top / 40% url('../image/mobile/bg.jpg');
+}
+.mobile-header {
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.mobile-logo {
+  width: 70px;
+  height: 70px;
+  background: center / cover url('../image/mobile/logo.png');
+}
+.mobile-header-info {
+  margin-left: 15px;
+}
+.mobile-header-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+.mobile-header-subtitle {
+  font-size: 12px;
+  color: rgb(204, 204, 204);
+  padding: 6px 0 9px 0;
+}
+.mobile-header-text {
+  font-size: 14px;
+}
+.mobile-count {
+  margin: 0 10px;
+  padding: 20px 10px;
+  color: rgb(255, 255, 255);
+  background: rgba(77, 71, 98, 0.7);
+  text-align: center;
+  display: flex;
+}
+.mobile-count-list {
+  flex: 1;
+}
+.mobile-count-title {
+  font-size: 13px;
+  color: rgb(170, 168, 176);
+}
+.mobile-count-text {
+  margin-top: 10px;
+  font-size: 15px;
+  @include textOverflow;
+}
+.mobile-scroll {
+  margin: 10px;
+  display: flex;
+  overflow-x: auto;
+}
+.mobile-scroll-list {
+  padding-right: 10px;
+}
+.mobile-scroll-list:last-child {
+  padding-right: 0;
+}
+.mobile-scroll img {
+  display: block;
+  border-radius: 10px;
+  width: 200px;
+}
+.mobile-install {
+  padding: 10px;
+  font-size: 15px;
+}
+.mobile-install-title {
+  margin-bottom: 15px;
+  color: #fff;
+  text-align: center;
+}
+.mobile-tab {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.mobile-tab-header {
+  display: flex;
+  justify-content: center;
+}
+.mobile-tab-header .item {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);    
+}
+.mobile-tab-ios {
+  border-radius: 15px 0 0 15px;
+}
+.mobile-tab-android {
+  border-radius: 0 15px 15px 0;
+}
+.mobile-tab-ios {
+  border-radius: 15px 0 0 15px;
+}
+.mobile-tab-header .active {
+  color: #000;
+  background: #fff;
+}
+.mobile-tab-content {
+  margin-top: 20px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.mobile-tab-content .item {
+  width: 100%;
+  height: auto;
+  line-height: 16px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1;
+  transition: left .3s;
+}
+.mobile-tab-content .active {
+  left: 0;
+}
+.mobile-join {}
+.mobile-join-btn {
+  width: 170px;
+  height: 40px;
+  margin: 0 auto;
+  background: center / contain no-repeat url('../image/mobile/join-tg.png');
+}
+.mobile-join-text {
+  padding: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(248, 79, 110);
+}
+.mobile-download {
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+}
+.mobile-download-btn  {
+  display: block;
+  margin: 0 10px;
+  width: 110px;
+  height: 30px;
+}
+.mobile-download-android {
+  background: center / contain no-repeat url('../image/public/btn-android.png');
+}
+.mobile-download-ios-tf {
+  background: center / contain no-repeat url('../image/public/btn-ios-tf.png');
+}
+.mobile-download-ios-company {
+  background: center / contain no-repeat url('../image/public/btn-ios-company.png');
+}
+
+// 媒体查询
+.mobile {
+  @media screen and (min-width: 750px) {
+    display: none;
+  }
+}
+.pc {
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+}

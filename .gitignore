@@ -90,5 +90,4 @@ sw.*
 *.swp
 
 # 忽略打包后的一些文件
-/dist/*
-!/dist/page/
+static/css/

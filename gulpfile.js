@@ -9,13 +9,12 @@ const {
 const del = require('del'); // 删除文件
 const gulpSass            = require('gulp-sass');             // 处理 sass
 const gulpLess            = require('gulp-less');             // 处理 less
-const autoprefixer        = require('gulp-autoprefixer');     // 添加 css 兼容前缀
 const gulpCssnano         = require('gulp-cssnano');          // 压缩 css
 const gulpBabel           = require("gulp-babel");            // babel 【依赖 @babel/core @babel/preset-env 】
-const gulpJshint          = require('gulp-jshint');           // 检测 js 【依赖 jshint 】
 const gulpUglify          = require("gulp-uglify");           // 压缩 js
 const gulpImagemin        = require("gulp-imagemin");         // 压缩 img
 const gulpHtmlmin         = require('gulp-htmlmin');          // 压缩 html
+const gulpConcat          = require('gulp-concat');           // 合并（添加在css/js就是合并css/js）
 const browserSync         = require("browser-sync").create(); // 静态服务
 const reload              = browserSync.reload;               // 服务重启
 const gulpRev        = require('gulp-rev');         // 生成 files-version.json 配置文件
@@ -24,25 +23,6 @@ const gulpRewRewrite = require('gulp-rev-rewrite'); // 根据 files-version.json
 const offset = 5;                         // 凯撒加密偏移量
 const config = require("./package.json"); // 引入配置文件
 
-// 凯撒加密
-function do_encrypt(key, plain) {
-  var ctext = "";
-  key = Number(key);
-  plain = String(plain);
-	for(var i = 0; i < plain.length; i++) {
-		var pcode = plain.charCodeAt(i);
-		var ccode = pcode;
-		if(pcode >= 65 && pcode <= 90) {
-			ccode = ((pcode - 65) + key * 1) % 26 + 65;
-		}
-		if(pcode >= 97 && pcode <= 122) {
-			ccode = ((pcode - 97) + key * 1) % 26 + 97;
-		}
-		ctext += String.fromCharCode(ccode);
-  }
-	return ctext;
-}
-
 //删除 dist 文件夹
 const clean = () => del("./dist");
 
@@ -50,7 +30,7 @@ const clean = () => del("./dist");
 const staticTask = () => {
   return src(
     [
-      './tt.json',           // 白名单+下载地址
+      './download.json',     // 相关地址
       './static/public/**/*' // 静态资源
     ],
     { allowEmpty: true, base: '.' }
@@ -60,7 +40,7 @@ const staticTask = () => {
 
 // 处理 sass
 const sassTask = () => {
-  return src(['./static/sass/*.scss', '!./static/sass/base.scss'])
+  return src(['./static/sass/*.scss'])
   .pipe(gulpSass())
   .pipe(dest('./static/css/'))
 }
@@ -74,19 +54,19 @@ const lessTask = () => {
 
 // 处理 css
 const cssTask = () =>{
-  return src(['./static/css/*.css', '!./static/css/base.css'])
-  .pipe(autoprefixer())             // 格式化
-  .pipe(gulpCssnano({
-    zindex: false                   // 解决重新计算z-index
-  }))                               // 压缩 css
-  .pipe(dest('./dist/static/css/')) // 把压缩的 css 文件复制到 dist/css 文件夹内【不带 hash 值】
+  return src(['./static/css/*.css'])
+    .pipe(gulpConcat('main.css'))     // 合并
+    .pipe(gulpCssnano({
+      zindex: false                   // 解决重新计算z-index
+    }))                               // 压缩 css
+    .pipe(dest('./dist/static/css/')) // 把压缩的 css 文件复制到 dist/css 文件夹内【不带 hash 值】
 }
 
 // 处理 img
 const imageTask = () => {
-  return src(['./static/images/*', './static/images/**/*'])
+  return src(['./static/image/*', './static/image/**/*'])
   .pipe(gulpImagemin()) // 压缩 img
-  .pipe(dest('./dist/static/images/'))
+  .pipe(dest('./dist/static/image/'))
 }
 
 // 处理 js
@@ -115,29 +95,12 @@ const jsTask = () =>{
     ],
     minified: true,          // 压缩代码【默认是false】
   }))                        // babel
-  .pipe(gulpJshint())        // 检测 js
   .pipe(gulpUglify({
     compress: {
       drop_console: true,    // 过滤 console
     }
   }))                        // 压缩 js
   .pipe(dest('./dist/static/js/'))  // 把压缩的 js 文件复制到 dist/js 文件夹内【不带 hash 值】
-}
-
-// 加密 js
-const encryptJsTask = () => {
-  return src('./static/dist/js/*.js')
-  .on('data', function(file){
-    if(file.basename !== 'base.js' && file.contents) {
-      const newString = new Buffer.from(file.contents, 'utf-8').toString(); // 把 buffer 转换成字符串
-      const encrypt = do_encrypt(offset, newString);                        // 把字符串使用凯撒加密算法进行加密
-      const spliceEncrypt = `eval(do_decrypt(5,\'` + encrypt + `\'));`;     // 在加密文件外面添加解密方法
-      const newBuffer = new Buffer.from(spliceEncrypt);                     // 把包含解密算法的加密文件转成 buffer 文件
-      file.contents = newBuffer;
-      return file;
-    }
-  })
-  .pipe(dest('./static/dist/js/'))
 }
 
 // 给 css/js/img 文件添加版本号【注意逗号之间没有空格】
@@ -194,7 +157,7 @@ const watchFiles = () => {
   watch('./static/sass/*.scss', series(sassTask, cssTask)).on("change", reload); // 监听 scss   文件夹变化【串行先执行 sass  编译再执行 cssTask 编译最后重启服务】
   watch('./static/less/*.less', series(lessTask, cssTask)).on("change", reload); // 监听 less   文件夹变化【串行先执行 less  编译再执行 cssTask 编译最后重启服务】
   watch('./static/js/*.js', jsTask).on("change", reload);                        // 监听 js     文件夹变化【使用 jsTask     编译再重启服务】
-  watch('./static/images/*', imageTask).on("change", reload);                    // 监听 image  文件夹变化【使用 imageTask  编译再重启服务】
+  watch('./static/image/*', imageTask).on("change", reload);                    // 监听 image  文件夹变化【使用 imageTask  编译再重启服务】
   watch('./static/css/*.css', cssTask).on("change", reload);                     // 监听 css    文件夹变化【使用 cssTask    编译再重启服务】
   watch('./pages/*.html', htmlTask).on("change", reload);                       // 监听 html   文件夹变化【使用 htmlTask   编译再重启服务】
   return;
@@ -215,7 +178,6 @@ exports.default = series(
   parallel(staticTask, sassTask, lessTask), // 并行复制静态资源，编译 sass 和 less
   parallel(cssTask, jsTask, imageTask),     // 编译 css, js, img
   setVersion,                               // 根据文件生成版本号
-  encryptJsTask,                            // 加密 js
   parallel(rename),                         // 更新配置文件
   parallel(htmlTask),                       // 编译 html
   parallel(watchFiles, server)              // 监听文件变化+启动服务

@@ -1,8 +1,8 @@
 {
   "name": "gulp-server",
   "version": "1.0.22",
-  "//": "cdn正式地址： //cdn1.att-st.me/ cdn测试地址： / ",
-  "cdn": "//cdn1.att-st.me/",
+  "//": "cdn正式地址： //sunsimiao.rf.gd cdn测试地址： / ",
+  "cdn": "/",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,5 +34,7 @@
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.11.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "gulp-concat": "^2.6.1"
+  }
 }

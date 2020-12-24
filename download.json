@@ -1,0 +1,14 @@
+{
+  "code": 200,
+  "message": "",
+  "data": {
+    "url_android": "http://sunsimiao.rf.gd",
+    "url_ios_free": "http://sunsimiao.rf.gd",
+    "url_ios_tf": "http://sunsimiao.rf.gd",
+    "url_ios_super": "http://sunsimiao.rf.gd",
+    "url_potato": "",
+    "url_host": [
+      "http://sunsimiao.rf.gd"
+    ]
+  }
+}
