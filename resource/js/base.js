@@ -24,7 +24,7 @@ function verifyWeChatQQ() {
 		document.write("<style>#we-chat-download-modal{width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:100;background-color:rgb(0,0,0);display:flex;align-items:center;justify-content:center;}.we-chat-modal-img{width:70vw;}</style><div id=\"we-chat-download-modal\"><img class=\"we-chat-modal-img\" src=" + imgSrc + "></div>");
 	}
 }
-verifyWeChatQQ();
+// verifyWeChatQQ();
 
 
 // 动态修改body的font-size（用来处理 rem 单位）

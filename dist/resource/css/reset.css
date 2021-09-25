@@ -1,0 +1,86 @@
+@charset "UTF-8";
+*:focus {
+  outline: none !important; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none; }
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-size: 16px; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari. */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible; }
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit; }
+  a:hover, a:focus {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none; }
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 5px;
+  /*竖向滚动条的宽度*/
+  height: 5px;
+  /*横向滚动条的高度*/ }
+
+::-webkit-scrollbar-thumb {
+  /*滚动条里面的小方块*/
+  background: #666666; }
+
+::-webkit-scrollbar-track {
+  /*滚动条轨道的样式*/
+  background: transparent; }

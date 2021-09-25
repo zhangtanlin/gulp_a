@@ -88,6 +88,3 @@ sw.*
 
 # Vim swap files
 *.swp
-
-# 忽略打包后的一些文件
-static/css/

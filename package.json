@@ -1,6 +1,6 @@
 {
   "name": "gulp-server",
-  "version": "1.0.22",
+  "version": "1.0.0",
   "//": "cdn正式地址： //sunsimiao.rf.gd cdn测试地址： / ",
   "cdn": "/",
   "description": "",

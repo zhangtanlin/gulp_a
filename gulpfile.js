@@ -31,7 +31,7 @@ const staticTask = () => {
   return src(
     [
       './download.json',     // 相关地址
-      './static/public/**/*' // 静态资源
+      './resource/lib/**/*', // 静态资源
     ],
     { allowEmpty: true, base: '.' }
   )
@@ -40,38 +40,38 @@ const staticTask = () => {
 
 // 处理 sass
 const sassTask = () => {
-  return src(['./static/sass/*.scss'])
+  return src(['./resource/sass/*.scss'])
   .pipe(gulpSass())
-  .pipe(dest('./static/css/'))
+  .pipe(dest('./dist/resource/css/'))
 }
 
 // 处理 less
 const lessTask = () => {
-  return src('./static/less/*.less')
+  return src('./resource/less/*.less')
   .pipe(gulpLess())
-  .pipe(dest('./static/css/'))
+  .pipe(dest('./dist/resource/css/'))
 }
 
 // 处理 css
 const cssTask = () =>{
-  return src(['./static/css/*.css'])
-    .pipe(gulpConcat('main.css'))     // 合并
+  return src(['./dist/resource/css/*.css'])
+    .pipe(gulpConcat('main.css')) // 合并
     .pipe(gulpCssnano({
-      zindex: false                   // 解决重新计算z-index
-    }))                               // 压缩 css
-    .pipe(dest('./dist/static/css/')) // 把压缩的 css 文件复制到 dist/css 文件夹内【不带 hash 值】
+      zindex: false               // 解决重新计算z-index
+    }))                           // 压缩 css
+    .pipe(dest('./dist/resource/css/'))    // 把压缩的 css 文件复制到 dist/css 文件夹内【不带 hash 值】
 }
 
 // 处理 img
 const imageTask = () => {
-  return src(['./static/image/*', './static/image/**/*'])
+  return src(['./resource/image/*', './resource/image/**/*'])
   .pipe(gulpImagemin()) // 压缩 img
-  .pipe(dest('./dist/static/image/'))
+  .pipe(dest('./dist/resource/image/'))
 }
 
 // 处理 js
 const jsTask = () =>{
-  return src(['./static/js/*.js'])
+  return src(['./resource/js/*.js'])
   .pipe(gulpBabel({
     presets: [
       [
@@ -100,14 +100,14 @@ const jsTask = () =>{
       drop_console: true,    // 过滤 console
     }
   }))                        // 压缩 js
-  .pipe(dest('./dist/static/js/'))  // 把压缩的 js 文件复制到 dist/js 文件夹内【不带 hash 值】
+  .pipe(dest('./dist/resource/js/'))  // 把压缩的 js 文件复制到 dist/js 文件夹内【不带 hash 值】
 }
 
 // 给 css/js/img 文件添加版本号【注意逗号之间没有空格】
 const setVersion = () => {
   return src([
-    './dist/*.*',
-    './dist/**/*.*',
+    './dist/resource/*.*',
+    './dist/resource/**/*.*',
   ])
   .pipe(gulpRev())                                // 给 css/js/img 文件添加 hash 值，此处不添加到文件名上，只写进配置文件
   .pipe(gulpRev.manifest("./files-version.json")) // 把 css/js/img 原文件和生成 hash 值的关系，写进配置文件
@@ -135,7 +135,7 @@ const rename = () => {
 // 处理 html
 const htmlTask = () => {
   const manifest = src('./files-version.json');          // 配置文件
-  return src(['./pages/*.html'])
+  return src(['./view/*.html'])
   .pipe(gulpHtmlmin({
     removeComments: true,                // 清除 HTML 注释
     collapseWhitespace: true,            // 压缩空格
@@ -147,19 +147,18 @@ const htmlTask = () => {
     minifyCSS: true                      // 压缩页面CSS
   }))                                    // 压缩 html
   .pipe(gulpRewRewrite({ manifest }))    // 替换html地址
-  .pipe(dest('./dist/page/'))            // 输出到打包目录（这里定义的是 page ）
-  .pipe(dest('./dist/'));                // 输出到 Browsersync 服务目录
+  .pipe(dest('./dist/'));                // 输出到 Browsersync 服务目录[输出到打包目录（这里定义的是 page ）]
 }
 
 // 监听文件变化
 const watchFiles = () => {
-  watch('./static/public/**/*', staticTask).on("change", reload);                // 监听 public 文件夹变化【使用 staticTask 编译再重启服务】
-  watch('./static/sass/*.scss', series(sassTask, cssTask)).on("change", reload); // 监听 scss   文件夹变化【串行先执行 sass  编译再执行 cssTask 编译最后重启服务】
-  watch('./static/less/*.less', series(lessTask, cssTask)).on("change", reload); // 监听 less   文件夹变化【串行先执行 less  编译再执行 cssTask 编译最后重启服务】
-  watch('./static/js/*.js', jsTask).on("change", reload);                        // 监听 js     文件夹变化【使用 jsTask     编译再重启服务】
-  watch('./static/image/*', imageTask).on("change", reload);                    // 监听 image  文件夹变化【使用 imageTask  编译再重启服务】
-  watch('./static/css/*.css', cssTask).on("change", reload);                     // 监听 css    文件夹变化【使用 cssTask    编译再重启服务】
-  watch('./pages/*.html', htmlTask).on("change", reload);                       // 监听 html   文件夹变化【使用 htmlTask   编译再重启服务】
+  watch('./resource/lib/**/*', staticTask).on("change", reload);                   // 监听 public 文件夹变化【使用 staticTask 编译再重启服务】
+  watch('./resource/sass/*.scss', series(sassTask, cssTask)).on("change", reload); // 监听 scss   文件夹变化【串行先执行 sass  编译再执行 cssTask 编译最后重启服务】
+  watch('./resource/less/*.less', series(lessTask, cssTask)).on("change", reload); // 监听 less   文件夹变化【串行先执行 less  编译再执行 cssTask 编译最后重启服务】
+  watch('./resource/js/*.js', jsTask).on("change", reload);                        // 监听 js     文件夹变化【使用 jsTask     编译再重启服务】
+  watch('./resource/image/*', imageTask).on("change", reload);                     // 监听 image  文件夹变化【使用 imageTask  编译再重启服务】
+  watch('./resource/css/*.css', cssTask).on("change", reload);                     // 监听 css    文件夹变化【使用 cssTask    编译再重启服务】
+  watch('./view/*.html', htmlTask).on("change", reload);                  // 监听 html   文件夹变化【使用 htmlTask   编译再重启服务】
   return;
 }
 
