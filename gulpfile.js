@@ -32,6 +32,7 @@ const staticTask = () => {
     [
       './download.json',     // 相关地址
       './resource/lib/**/*', // 静态资源
+      './resource/video/*',  // 视频
     ],
     { allowEmpty: true, base: '.' }
   )

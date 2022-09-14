@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>抖阴</title>
+  <meta name="keywords" content="抖阴">
+  <meta name="description" content="抖阴">
+  <meta name="x5-fullscreen" content="true">
+  <link rel="Shortcut Icon" href="./resource/image/favicon.ico">
+  <link rel="Bookmark" href="./resource/image/favicon.ico">
+  <link rel="stylesheet" href="./resource/css/main.css">
+  <script src="./resource/lib/jquery.min.js"></script>
+  <script src="./resource/lib/jquery.qrcode.js"></script>
+  <script src="./resource/lib/clipboard.min.js"></script>
+  <script src="./resource/js/utf.js"></script>
+</head>
+
+<body class="android_poisoning_body">
+  <header class="android_poisoning_header">
+    <div class="android_poisoning_left"></div>
+    <div class="android_poisoning_center">
+      手机报毒禁止安装解决办法
+    </div>
+    <div class="android_poisoning_right"></div>
+  </header>
+  <main class="android_poisoning_main">
+    <a href="./android_poisoning_detail.html?id=1" class="item">
+      <img src="./resource/image/android-poisoning/cell1.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=2" class="item">
+      <img src="./resource/image/android-poisoning/cell2.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=3" class="item">
+      <img src="./resource/image/android-poisoning/cell3.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=4" class="item">
+      <img src="./resource/image/android-poisoning/cell4.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=5" class="item">
+      <img src="./resource/image/android-poisoning/cell5.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=6" class="item">
+      <img src="./resource/image/android-poisoning/cell6.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=7" class="item">
+      <img src="./resource/image/android-poisoning/cell7.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=8" class="item">
+      <img src="./resource/image/android-poisoning/cell8.png" />
+    </a>
+    <a href="./android_poisoning_detail.html?id=9" class="item">
+      <img src="./resource/image/android-poisoning/cell9.png" />
+    </a>
+  </main>
+
+  <script type="text/javascript">
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+        dpr = isIOS ? Math.min(win.devicePixelRatio, 3) : 1,
+        dpr = window.top === window.self ? dpr : 1, //被iframe引用时，禁止缩放
+        dpr = 1,
+        scale = 1 / dpr,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+      docEl.dataset.dpr = dpr;
+      var metaEl = doc.createElement('meta');
+      metaEl.name = 'viewport';
+      metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
+      docEl.firstElementChild.appendChild(metaEl);
+      var recalc = function () {
+        var width = docEl.clientWidth;
+        if (width / dpr > 750) {
+          width = 750 * dpr;
+        }
+        docEl.style.fontSize = 100 * (width / 350) + 'px';
+      };
+      recalc()
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+    })(document, window);
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // 返回按钮
+      $(".android_poisoning_left").click(function () {
+        history.go(-1);
+      })
+    });
+  </script>
+</body>
+
+</html>

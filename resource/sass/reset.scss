@@ -40,6 +40,8 @@ body {
 	height: 100%;
 	line-height: 1;
 	font-size: 16px;
+	position: relative;
+  z-index: 1;
 }
 
 ol, ul {
@@ -86,8 +88,10 @@ a {
 }
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar{
-	width: 5px;/*竖向滚动条的宽度*/
-	height: 5px;/*横向滚动条的高度*/
+	/* 隐藏滚动条 */
+	width: 0;/*竖向滚动条的宽度*/
+	height: 0;/*横向滚动条的高度*/
+	display: none;
 }
 ::-webkit-scrollbar-thumb{/*滚动条里面的小方块*/
 	background: #666666;

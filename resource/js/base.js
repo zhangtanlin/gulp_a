@@ -40,4 +40,5 @@ function resetBodyFontSize() {
 		htmlDom.style.fontSize = htmlWidth / 100 + 'px';
 	}); // 屏幕改变时
 }
+
 resetBodyFontSize();
