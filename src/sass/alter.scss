@@ -1,0 +1,63 @@
+@import "./var.scss";
+
+// 弹出框
+.alter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  .alter_background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    background: rgba(0, 0, 0, .75);
+  }
+
+  .alter_box {
+    width: 300px;
+    height: 175px;
+    border: 1px solid $default_color_6;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 4rem;
+    z-index: 102;
+    opacity: 0;
+
+    .alter_title {
+      padding-bottom: 20px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .alter_text {
+      padding: 10px 0 30px 0;
+      font-size: 14px;
+      color: $default_color_5;
+    }
+
+    .alter_btn_text {}
+
+    .alter_btn_loading {
+      width: 100%;
+      height: 100%;
+      background: center / 40% no-repeat url("../image/loading.gif");
+      display: none;
+    }
+  }
+}

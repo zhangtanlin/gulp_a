@@ -1,0 +1,26 @@
+// 基础色
+$default_color_1: #2d1c4d;
+$default_color_2: #594675;
+$default_color_3: #684e94;
+$default_color_4: #b186a3;
+$default_color_5: #d5c0cf;
+$default_color_6: #e777b8;
+
+// 单行-超出的文本-省略号显示
+@mixin textOverflow() {
+  overflow: hidden;
+  /* 超出的文本隐藏 */
+  text-overflow: ellipsis;
+  /* 溢出用省略号显示 */
+  white-space: nowrap;
+  /* 溢出不换行 */
+}
+
+// 行间元素对齐
+@mixin textLeft {
+  text-align: left;
+}
+
+@mixin textRight {
+  text-align: right;
+}

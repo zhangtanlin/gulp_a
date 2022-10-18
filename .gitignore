@@ -92,3 +92,6 @@ sw.*
 # others
 dist
 files-version.json
+
+# Visual Studio Code
+.vscode
