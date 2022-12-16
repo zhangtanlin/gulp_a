@@ -1,19 +1,62 @@
 // 基础色
-$default_color_1: #2d1c4d;
-$default_color_2: #594675;
-$default_color_3: #684e94;
-$default_color_4: #b186a3;
-$default_color_5: #d5c0cf;
-$default_color_6: #e777b8;
+$colorPurpleLight: #e777b8;
+
+// 基础色
+$colorWhite: #fff;
+$colorBlack: #000;
+$colorNone: transparent;
+
+$colorBlack20: rgba(0, 0, 0, .2);
+$colorBlack50: rgba(0, 0, 0, .5);
+$colorBlack75: rgba(0, 0, 0, .75);
+
+$colorRedDark: #e31c14;
+$colorRedDark2: #e31c14;
+$colorRed: #FF4A4A;
+$colorRedLight: #fd8f8f;
+$colorRedLight2: #fff2f2;
+
+$colorOrange: #FF9600;
+$colorOrangeLight: #efd19d;
+
+$colorYellow: #FED322;
+
+$colorGrayDark: #333;
+$colorGrayDark2: #999;
+$colorGray: #ccc;
+$colorGrayLight: #e6e6e6;
+$colorGrayLight2: #f6f7f8;
+
+$colorBlueDark: #2d1c4d;
+$colorBlueDark2: #428af7;
+$colorBlue: #6de6fb;
+
+$colorPurpleDark: #5527FF;
+$colorPurpleDark2: #5527FF;
+$colorPurple: #CC37FF;
+$colorPurpleLight: #FD7AFF;
+$colorPurpleLight2: #d5c0cf;
+
+$colorOchre: #96670b;
+
 
 // 单行-超出的文本-省略号显示
-@mixin textOverflow() {
+@mixin textOverflow($num) {
+  // 超出的文本隐藏
   overflow: hidden;
-  /* 超出的文本隐藏 */
+  // 溢出用省略号显示
   text-overflow: ellipsis;
-  /* 溢出用省略号显示 */
-  white-space: nowrap;
-  /* 溢出不换行 */
+  @if $num {
+    // 设置为盒模型
+    display: -webkit-box;
+    // 展示多少行
+    -webkit-line-clamp: $num;
+    // 设置元素垂直对齐
+    -webkit-box-orient: vertical;
+  }@else{
+    // 溢出不换行
+    white-space: nowrap;
+  }
 }
 
 // 行间元素对齐

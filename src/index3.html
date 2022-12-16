@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>七度空间</title>
+  <meta name="keywords" content="七度空间">
+  <meta name="description" content="七度空间">
+  <meta name="x5-fullscreen" content="true">
+  <link rel="Shortcut Icon" href="./favicon.ico">
+  <link rel="Bookmark" href="./favicon.ico">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/swiper.min.css">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.qrcode.js"></script>
+  <script src="./js/clipboard.min.js"></script>
+  <script src="./js/swiper.min.js"></script>
+  <script src="./js/utf.js"></script>
+  <script>
+    var dataMap = {
+      // 复制文字
+      copyText: "dyporn_aff:123",
+      // 商务合作
+      businessLink: "/index.html?aaa=123",
+      // tg
+      tgLink: "https://t.me/douyinpj",
+      // 土豆
+      potatoLink: "https://ptcc.in/douyinfg",
+      // 推特
+      twitterLink: "",
+      // ios下载
+      iosLink: "/?mod=index&code=pwa&aff_code=",
+      // 安卓下载
+      androidLink: "https://download.tzycdlw.cn/down/dy/dy_1.0_220914_1.apk",
+      // 当前地址
+      qrcodeLink: location.href,
+    };
+  </script>
+</head>
+
+<body class="body" v-data-clipboard-text="dataMap.copyText">
+  <!-- 首页 -->
+  <div routerName="#index.html">
+    <!-- pc端 -->
+    <div class="pc">
+      <div class="pc-bg">
+        <img lazy-loading="./image/pc/bg.jpg"/>
+      </div>
+      <div class="pc-contain">
+        <div class="pc-header">
+          <img class="pc-header-logo" lazy-loading="./image/pc/logo.png" alt="七度空间" />
+          <div class="pc-header-server">
+            <a v-href="dataMap.businessLink" target="_blank">
+              <img lazy-loading="./image/pc/icon-business.png" alt="商务合作">
+            </a>
+            <a v-href="dataMap.tgLink" target="_blank">
+              <img lazy-loading="./image/pc/icon-tg.png" alt="tg">
+            </a>
+          </div>
+        </div>
+        <div class="pc-center">
+          <img lazy-loading="./image/pc/img-title.png" alt="10年沉淀只做精品">
+        </div>
+        <div class="pc-bottom">
+          <div class="pc-bottom-box">
+            <div class="pc-bottom-download">
+              <div class="pc-download-qrcode">
+                <div id="pc-qrcode" class="pc-qrcode-inner"></div>
+              </div>
+              <div class="pc-bottom-download-box">
+                <a v-href="dataMap.androidLink" target="_blank" class="pc-download-android"></a>
+                <a v-href="dataMap.iosLink" target="_blank" class="pc-download-ios"></a>
+                <p class="pc-download-prompt">
+                  安卓手机建议使用<br/>UC浏览器下载
+                </p>
+              </div>
+            </div>
+            <div class="pc-bottom-title-box">
+              <p class="pc-bottom-title">
+                安装提示：下载好安装包以后，请断开网络<br />
+                由于行业原因，本APP会被某些杀毒软件认定为病毒，请大家放心下载使用，<br />
+                本APP有广告和会员收益，安装本APP 不会对您的手机造成任何损害。
+              </p>
+            </div>
+          </div>
+          <div class="prompt">七度空间版权所有</div>
+        </div>
+      </div>
+    </div>
+    <!-- 移动端 -->
+    <div class="mobile">
+      <div class="mobile-bg">
+        <img lazy-loading="./image/mobile/bg.jpg" />
+      </div>
+      <div class="mobile-contain">
+        <div class="mobile-header">
+          <img lazy-loading="./image/mobile/logo.png" />
+          <div class="mobile-header-active">
+            <a v-href="dataMap.businessLink" target="_blank">
+              <img lazy-loading="./image/mobile/icon-business.png" />
+            </a>
+            <a v-href="dataMap.potatoLink" target="_blank">
+              <img lazy-loading="./image/mobile/icon-potato.png" />
+            </a>
+            <a v-href="dataMap.tgLink" target="_blank">
+              <img lazy-loading="./image/mobile/icon-tg.png" />
+            </a>
+          </div>
+        </div>
+        <div class="mobile-center">
+          <div id="mobile-bg-swiper" class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img lazy-loading="./image/mobile/banner-1.png" />
+              </div>
+              <div class="swiper-slide">
+                <img lazy-loading="./image/mobile/banner-2.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-bottom">
+          <div class="mobile-bottom-btn-box">
+            <a v-href="dataMap.androidLink" target="_blank" class="mobile-bottom-btn android-btn">
+              <img lazy-loading="./image/mobile/download-android.png" />
+            </a>
+            <a href="#ios_install.html" class="mobile-bottom-btn ios-btn">
+              <img lazy-loading="./image/mobile/download-ios.png" />
+            </a>
+          </div>
+          <div class="mobile-prompt-box">
+            <a href="#android_poisoning.html" class="mobile-prompt-text">
+              安装包报毒解决方案
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ios安装指南 -->
+  <div routerName="#ios_install.html">
+    <div class="mobile-download">
+      <header class="header-back">
+        <a href="#index.html" class="header-back-left"></a>
+        <div class="header-back-center"></div>
+        <div class="header-back-right"></div>
+      </header>
+      <div class="mobile-download-header">
+        <img lazy-loading="./image/mobile/logo.png" />
+      </div>
+      <a target="_blank" v-href="dataMap.iosLink" class="mobile-download-btn">
+        <img lazy-loading="./image/mobile/download-btn.png" />
+      </a>
+      <div class="mobile-download-list-title">
+        <img lazy-loading="./image/mobile/list-1-title.png" alt="安装轻量版所需描述文件。此描述文件已通 过苹果官方认证，安全可靠。">
+      </div>
+      <div class="mobile-download-list-desc">
+        <img lazy-loading="./image/mobile/list-1-desc.jpg" alt="">
+      </div>
+      <div class="mobile-download-list-title">
+        <img lazy-loading="./image/mobile/list-2-title.png" alt="点击允许后，首先在桌面主屏幕找到 “设置” 进入设置点击“已下载描述文件”" />
+      </div>
+      <div class="mobile-download-list-desc">
+        <img lazy-loading="./image/mobile/list-2-desc.jpg" alt="">
+      </div>
+      <div class="mobile-download-list-title">
+        <img lazy-loading="./image/mobile/list-3-title.png" alt="最后按照提示一路点击右上角的“安装”或 “下一步” 即可完成安装">
+      </div>
+      <div class="mobile-download-list-desc">
+        <img lazy-loading="./image/mobile/list-3-desc.jpg" alt="">
+      </div>
+      <div class="mobile-download-list-title">
+        <img lazy-loading="./image/mobile/list-4-title.png" alt="如果您设置了锁屏密码，安装时需要输入锁屏 密码后才能继续">
+      </div>
+    </div>
+  </div>
+
+  <!-- 安卓报毒列表 -->
+  <div routerName="#android_poisoning.html">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#index.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <a href="#android_poisoning_detail.html?id=1" class="item">
+          <img lazy-loading="./image/android-poisoning/cell1.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=2" class="item">
+          <img lazy-loading="./image/android-poisoning/cell2.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=3" class="item">
+          <img lazy-loading="./image/android-poisoning/cell3.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=4" class="item">
+          <img lazy-loading="./image/android-poisoning/cell4.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=5" class="item">
+          <img lazy-loading="./image/android-poisoning/cell5.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=6" class="item">
+          <img lazy-loading="./image/android-poisoning/cell6.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=7" class="item">
+          <img lazy-loading="./image/android-poisoning/cell7.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=8" class="item">
+          <img lazy-loading="./image/android-poisoning/cell8.png" />
+        </a>
+        <a href="#android_poisoning_detail.html?id=9" class="item">
+          <img lazy-loading="./image/android-poisoning/cell9.png" />
+        </a>
+      </main>
+    </div>
+  </div>
+
+  <!-- 安卓报毒详情-允许未知来源 -->
+  <div routerName="#android_poisoning_detail.html?id=1">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell1.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell1-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- 安卓报毒详情-禁止安装恶意软件 -->
+  <div routerName="#android_poisoning_detail.html?id=2">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell2.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell2-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-鸿蒙纯净版 -->
+  <div routerName="#android_poisoning_detail.html?id=3">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell3.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell3-detail1.jpg" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell3-detail2.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-华为 -->
+  <div routerName="#android_poisoning_detail.html?id=4">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell4.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell4-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-小米 -->
+  <div routerName="#android_poisoning_detail.html?id=5">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell5.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell5-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-oppo -->
+  <div routerName="#android_poisoning_detail.html?id=6">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell6.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell6-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-vivo -->
+  <div routerName="#android_poisoning_detail.html?id=7">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell7.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell7-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-魅族 -->
+  <div routerName="#android_poisoning_detail.html?id=8">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell8.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell8-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- 安卓报毒详情-腾讯手机管家 -->
+  <div routerName="#android_poisoning_detail.html?id=9">
+    <div class="layout-box">
+      <header class="header-back white">
+        <a href="#android_poisoning.html" class="header-back-left"></a>
+        <div class="header-back-center">
+          手机报毒禁止安装解决办法
+        </div>
+        <div class="header-back-right"></div>
+      </header>
+      <main class="android-poisoning-main">
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell9.png" />
+        </div>
+        <div class="item">
+          <img lazy-loading="./image/android-poisoning/cell9-detail.jpg" />
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/onload.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // 粘贴板
+      new ClipboardJS('.body');
+      // 判断客户端
+      let u = navigator.userAgent;
+      let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+      let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+      if (isAndroid) {
+        $('.mobile-prompt-box').show();
+        $('.android-btn').show();
+      } else if (isIOS) {
+        $('.ios-btn').show();
+      } else {
+        $('.mobile-prompt-box').show();
+        $('.android-btn').show();
+        $('.ios-btn').show();
+      }
+      // pc端-二维码
+      $('#pc-qrcode').qrcode({
+        correctLevel: 1,
+        text: dataMap.qrcodeLink,
+      });
+      // 移动端-背景轮播
+      var bgSwiper = new Swiper('#mobile-bg-swiper', {
+        loop: true,
+        effect: 'fade',
+        autoplay: {
+          delay: 7500,
+          stopOnLastSlide: true,
+          disableOnInteraction: false,
+        },
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -27,7 +27,7 @@
   .alter_box {
     width: 300px;
     height: 175px;
-    border: 1px solid $default_color_6;
+    border: 1px solid $colorPurpleLight;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@
     .alter_text {
       padding: 10px 0 30px 0;
       font-size: 14px;
-      color: $default_color_5;
+      color: $colorPurpleLight2;
     }
 
     .alter_btn_text {}
